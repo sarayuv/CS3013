@@ -1,0 +1,480 @@
+Script started on 2024-01-16 18:18:33-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="143" LINES="46"]
+student@csvm-202312:~$ uname -a
+Linux csvm-202312 6.2.0-39-generic #40~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Nov 16 10:53:04 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+student@csvm-202312:~$ ls
+Desktop	 Documents  Downloads  Music  Pictures	project0  Public  snap	Templates  Videos
+student@csvm-202312:~$ pwd
+/home/student
+student@csvm-202312:~$ cd ..
+student@csvm-202312:/home$ ls
+rescue	student
+student@csvm-202312:/home$ cd ~
+student@csvm-202312:~$ ls
+Desktop	 Documents  Downloads  Music  Pictures	project0  Public  snap	Templates  Videos
+student@csvm-202312:~$ cd Documents
+student@csvm-202312:~/Documents$ cd project_0
+student@csvm-202312:~/Documents/project_0$ ls
+Makefile  README.txt  test.c
+student@csvm-202312:~/Documents/project_0$ man mkdir
+MKDIR(1)						       User Commands							   MKDIR(1)
+
+NAME
+       mkdir - make directories
+
+SYNOPSIS
+       mkdir [OPTION]... DIRECTORY...
+
+DESCRIPTION
+       Create the DIRECTORY(ies), if they do not already exist.
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       -m, --mode=MODE
+	      set file mode (as in chmod), not a=rwx - umask
+
+       -p, --parents
+	      no error if existing, make parent directories as needed
+
+       -v, --verbose
+	      print a message for each created directory
+
+       -Z     set SELinux security context of each created directory to the default type
+
+       --context[=CTX]
+	      like -Z, or if CTX is specified then set the SELinux or SMACK security context to CTX
+
+       --help display this help and exit
+
+       --version
+	      output version information and exit
+
+AUTHOR
+       Written by David MacKenzie.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report any translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright © 2020 Free Software Foundation, Inc.	License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       mkdir(2)
+student@csvm-202312:~/Documents/project_0$hgcc test.co=outest
+/usr/bin/ld: cannot find o: No such file or directory
+/usr/bin/ld: cannot find test: No such file or directory
+collect2: error: ld returned 1 exit status
+student@csvm-202312:~/Documents/project_0$ ./test
+bash: ./test: No such file or directory
+student@csvm-202312:~/Documents/project_0$ gcc test.c -o test
+student@csvm-202312:~/Documents/project_0$ ./test
+Segmentation fault (core dumped)
+student@csvm-202312:~/Documents/project_0$ man stncpy
+No manual entry for stncpy
+student@csvm-202312:~/Documents/project_0$ maneprintf
+PRINTF(1)						       User Commands							  PRINTF(1)
+
+NAME
+       printf - format and print data
+
+SYNOPSIS
+       printf FORMAT [ARGUMENT]...
+       printf OPTION
+
+DESCRIPTION
+       Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:
+
+       --help display this help and exit
+
+       --version
+	      output version information and exit
+
+       FORMAT controls the output as in C printf.  Interpreted sequences are:
+
+       \"     double quote
+
+       \\     backslash
+
+       \a     alert (BEL)
+
+       \b     backspace
+
+       \c     produce no further output
+
+       \e     escape
+
+       \f     form feed
+
+       \n     new line
+
+       \r     carriage return
+
+       \t     horizontal tab
+
+       \v     vertical tab
+
+       \NNN   byte with octal value NNN (1 to 3 digits)
+
+       \xHH   byte with hexadecimal value HH (1 to 2 digits)
+
+student@csvm-202312:~/Documents/project_0$ manpstrncpyo quit)
+STRCPY(3)						 Linux Programmer's Manual						  STRCPY(3)
+
+NAME
+       strcpy, strncpy - copy a string
+
+SYNOPSIS
+       #include <string.h>
+
+       char *strcpy(char *dest, const char *src);
+
+       char *strncpy(char *dest, const char *src, size_t n);
+
+DESCRIPTION
+       The  strcpy()  function copies the string pointed to by src, including the terminating null byte ('\0'), to the buffer pointed to by
+       dest.  The strings may not overlap, and the destination string dest must be large enough to receive  the	 copy.	 Beware	 of  buffer
+       overruns!  (See BUGS.)
+
+       The strncpy() function is similar, except that at most n bytes of src are copied.  Warning: If there is no null byte among the first
+       n bytes of src, the string placed in dest will not be null-terminated.
+
+       If the length of src is less than n, strncpy() writes additional null bytes to dest to ensure that a total of n bytes are written.
+
+       A simple implementation of strncpy() might be:
+
+	   char *
+	   strncpy(char *dest, const char *src, size_t n)
+	   {
+	       size_t i;
+
+	       for (i = 0; i < n && src[i] != '\0'; i++)
+		   dest[i] = src[i];
+	       for ( ; i < n; i++)
+		   dest[i] = '\0';
+
+	       return dest;
+	   }
+
+RETURN VALUE
+       The strcpy() and strncpy() functions return a pointer to the destination string dest.
+
+ATTRIBUTES
+       For an explanation of the terms used in this section, see attributes(7).
+
+       ┌────────────────────┬───────────────┬─────────┐
+       │Interface	    │ Attribute	    │ Value   │
+student@csvm-202312:~/Documents/project_0$rmanlexit q to quit)
+EXIT(3)							 Linux Programmer's Manual						    EXIT(3)
+
+NAME
+       exit - cause normal process termination
+
+SYNOPSIS
+       #include <stdlib.h>
+
+       void exit(int status);
+
+DESCRIPTION
+       The  exit() function causes normal process termination and the least significant byte of status (i.e., status & 0xFF) is returned to
+       the parent (see wait(2)).
+
+       All functions registered with atexit(3) and on_exit(3) are called, in the reverse order of their registration.  (It is possible	for
+       one  of these functions to use atexit(3) or on_exit(3) to register an additional function to be executed during exit processing; the
+       new registration is added to the front of the list of functions that remain to be called.)  If one of these functions does  not	re‐
+       turn (e.g., it calls _exit(2), or kills itself with a signal), then none of the remaining functions is called, and further exit pro‐
+       cessing (in particular, flushing of stdio(3) streams) is abandoned.   If	 a  function  has  been	 registered  multiple  times  using
+       atexit(3) or on_exit(3), then it is called as many times as it was registered.
+
+       All open stdio(3) streams are flushed and closed.  Files created by tmpfile(3) are removed.
+
+       The C standard specifies two constants, EXIT_SUCCESS and EXIT_FAILURE, that may be passed to exit() to indicate successful or unsuc‐
+       cessful termination, respectively.
+
+RETURN VALUE
+       The exit() function does not return.
+
+ATTRIBUTES
+       For an explanation of the terms used in this section, see attributes(7).
+
+       ┌──────────┬───────────────┬─────────────────────┐
+       │Interface │ Attribute	  │ Value		│
+       ├──────────┼───────────────┼─────────────────────┤
+       │exit()	  │ Thread safety │ MT-Unsafe race:exit │
+       └──────────┴───────────────┴─────────────────────┘
+       The exit() function uses a global variable that is not protected, so it is not thread-safe.
+
+CONFORMING TO
+       POSIX.1-2001, POSIX.1-2008, C89, C99, SVr4, 4.3BSD.
+
+NOTES
+       The behavior is undefined if one of the functions registered using atexit(3) and on_exit(3) calls either exit() or longjmp(3).  Note
+       that a call to execve(2) removes registrations created using atexit(3) and on_exit(3).
+student@csvm-202312:~/Documents/project_0$emanogcc to quit)
+GCC(1)								    GNU								     GCC(1)
+
+NAME
+       gcc - GNU project C and C++ compiler
+
+SYNOPSIS
+       gcc [-c|-S|-E] [-std=standard]
+	   [-g] [-pg] [-Olevel]
+	   [-Wwarn...] [-Wpedantic]
+	   [-Idir...] [-Ldir...]
+	   [-Dmacro[=defn]...] [-Umacro]
+	   [-foption...] [-mmachine-option...]
+	   [-o outfile] [@file] infile...
+
+       Only the most useful options are listed here; see below for the remainder.  g++ accepts mostly the same options as gcc.
+
+DESCRIPTION
+       When you invoke GCC, it normally does preprocessing, compilation, assembly and linking.	The "overall options" allow you to stop
+       this process at an intermediate stage.  For example, the -c option says not to run the linker.  Then the output consists of object
+       files output by the assembler.
+
+       Other options are passed on to one or more stages of processing.	 Some options control the preprocessor and others the compiler
+       itself.	Yet other options control the assembler and linker; most of these are not documented here, since you rarely need to use any
+       of them.
+
+       Most of the command-line options that you can use with GCC are useful for C programs; when an option is only useful with another
+       language (usually C++), the explanation says so explicitly.  If the description for a particular option does not mention a source
+       language, you can use that option with all supported languages.
+
+       The usual way to run GCC is to run the executable called gcc, or machine-gcc when cross-compiling, or machine-gcc-version to run a
+       specific version of GCC.	 When you compile C++ programs, you should invoke GCC as g++ instead.
+
+       The gcc program accepts options and file names as operands.  Many options have multi-letter names; therefore multiple single-letter
+       options may not be grouped: -dv is very different from -d -v.
+
+       You can mix options and other arguments.	 For the most part, the order you use doesn't matter.  Order does matter when you use
+       several options of the same kind; for example, if you specify -L more than once, the directories are searched in the order
+       specified.  Also, the placement of the -l option is significant.
+
+       Many options have long names starting with -f or with -W---for example, -fmove-loop-invariants, -Wformat and so on.  Most of these
+       have both positive and negative forms; the negative form of -ffoo is -fno-foo.  This manual documents only one of these two forms,
+       whichever one is not the default.
+
+       Some options take one or more arguments typically separated either by a space or by the equals sign (=) from the option name.
+       Unless documented otherwise, an argument can be either numeric or a string.  Numeric arguments must typically be small unsigned
+GCC(1)g page gcc(1) line 1 (press h for help or q to quit)	    GNU								     GCC(1)
+
+NAME
+       gcc - GNU project C and C++ compiler
+
+SYNOPSIS
+       gcc [-c|-S|-E] [-std=standard]
+	   [-g] [-pg] [-Olevel]
+	   [-Wwarn...] [-Wpedantic]
+	   [-Idir...] [-Ldir...]
+	   [-Dmacro[=defn]...] [-Umacro]
+	   [-foption...] [-mmachine-option...]
+	   [-o outfile] [@file] infile...
+
+       Only the most useful options are listed here; see below for the remainder.  g++ accepts mostly the same options as gcc.
+
+DESCRIPTION
+       When you invoke GCC, it normally does preprocessing, compilation, assembly and linking.	The "overall options" allow you to stop
+       this process at an intermediate stage.  For example, the -c option says not to run the linker.  Then the output consists of object
+       files output by the assembler.
+
+       Other options are passed on to one or more stages of processing.	 Some options control the preprocessor and others the compiler
+       itself.	Yet other options control the assembler and linker; most of these are not documented here, since you rarely need to use any
+       of them.
+
+       Most of the command-line options that you can use with GCC are useful for C programs; when an option is only useful with another
+       language (usually C++), the explanation says so explicitly.  If the description for a particular option does not mention a source
+       language, you can use that option with all supported languages.
+
+       The usual way to run GCC is to run the executable called gcc, or machine-gcc when cross-compiling, or machine-gcc-version to run a
+       specific version of GCC.	 When you compile C++ programs, you should invoke GCC as g++ instead.
+
+       The gcc program accepts options and file names as operands.  Many options have multi-letter names; therefore multiple single-letter
+       options may not be grouped: -dv is very different from -d -v.
+
+       You can mix options and other arguments.	 For the most part, the order you use doesn't matter.  Order does matter when you use
+       several options of the same kind; for example, if you specify -L more than once, the directories are searched in the order
+       specified.  Also, the placement of the -l option is significant.
+
+       Many options have long names starting with -f or with -W---for example, -fmove-loop-invariants, -Wformat and so on.  Most of these
+       have both positive and negative forms; the negative form of -ffoo is -fno-foo.  This manual documents only one of these two forms,
+       whichever one is not the default.
+
+       Some options take one or more arguments typically separated either by a space or by the equals sign (=) from the option name.
+       Unless documented otherwise, an argument can be either numeric or a string.  Numeric arguments must typically be small unsigned
+GCC(1)								    GNU								     GCC(1)
+
+NAME
+       gcc - GNU project C and C++ compiler
+
+SYNOPSIS
+       gcc [-c|-S|-E] [-std=standard]
+	   [-g] [-pg] [-Olevel]
+	   [-Wwarn...] [-Wpedantic]
+	   [-Idir...] [-Ldir...]
+	   [-Dmacro[=defn]...] [-Umacro]
+	   [-foption...] [-mmachine-option...]
+	   [-o outfile] [@file] infile...
+
+       Only the most useful options are listed here; see below for the remainder.  g++ accepts mostly the same options as gcc.
+
+DESCRIPTION
+       When you invoke GCC, it normally does preprocessing, compilation, assembly and linking.	The "overall options" allow you to stop
+       this process at an intermediate stage.  For example, the -c option says not to run the linker.  Then the output consists of object
+       files output by the assembler.
+
+       Other options are passed on to one or more stages of processing.	 Some options control the preprocessor and others the compiler
+       itself.	Yet other options control the assembler and linker; most of these are not documented here, since you rarely need to use any
+       of them.
+
+       Most of the command-line options that you can use with GCC are useful for C programs; when an option is only useful with another
+       language (usually C++), the explanation says so explicitly.  If the description for a particular option does not mention a source
+       language, you can use that option with all supported languages.
+
+       The usual way to run GCC is to run the executable called gcc, or machine-gcc when cross-compiling, or machine-gcc-version to run a
+       specific version of GCC.	 When you compile C++ programs, you should invoke GCC as g++ instead.
+
+       The gcc program accepts options and file names as operands.  Many options have multi-letter names; therefore multiple single-letter
+       options may not be grouped: -dv is very different from -d -v.
+
+       You can mix options and other arguments.	 For the most part, the order you use doesn't matter.  Order does matter when you use
+       several options of the same kind; for example, if you specify -L more than once, the directories are searched in the order
+       specified.  Also, the placement of the -l option is significant.
+
+       Many options have long names starting with -f or with -W---for example, -fmove-loop-invariants, -Wformat and so on.  Most of these
+       have both positive and negative forms; the negative form of -ffoo is -fno-foo.  This manual documents only one of these two forms,
+       whichever one is not the default.
+
+       Some options take one or more arguments typically separated either by a space or by the equals sign (=) from the option name.
+       Unless documented otherwise, an argument can be either numeric or a string.  Numeric arguments must typically be small unsigned
+...skipping...
+       To tell GCC to emit extra information for use by a debugger, in almost all cases you need only to add -g to your other options.
+
+       GCC allows you to use -g with -O.  The shortcuts taken by optimized code may occasionally be surprising: some variables you declared
+       may not exist at all; flow of control may briefly move where you did not expect it; some statements may not be executed because they
+       compute constant results or their values are already at hand; some statements may execute in different places because they have been
+       moved out of loops.  Nevertheless it is possible to debug optimized output.  This makes it reasonable to use the optimizer for
+       programs that might have bugs.
+
+       If you are not using some other optimization option, consider using -Og with -g.	 With no -O option at all, some compiler passes
+       that collect information useful for debugging do not run at all, so that -Og may result in a better debugging experience.
+
+       -g  Produce debugging information in the operating system's native format (stabs, COFF, XCOFF, or DWARF).  GDB can work with this
+	   debugging information.
+
+	   On most systems that use stabs format, -g enables use of extra debugging information that only GDB can use; this extra
+	   information makes debugging work better in GDB but probably makes other debuggers crash or refuse to read the program.  If you
+	   want to control for certain whether to generate the extra information, use -gstabs+, -gstabs, -gxcoff+, -gxcoff, or -gvms (see
+	   below).
+
+       -ggdb
+	   Produce debugging information for use by GDB.  This means to use the most expressive format available (DWARF, stabs, or the
+	   native format if neither of those are supported), including GDB extensions if at all possible.
+
+       -gdwarf
+       -gdwarf-version
+	   Produce debugging information in DWARF format (if that is supported).  The value of version may be either 2, 3, 4 or 5; the
+	   default version for most targets is 5 (with the exception of VxWorks, TPF and Darwin/Mac OS X, which default to version 2, and
+	   AIX, which defaults to version 4).
+
+	   Note that with DWARF Version 2, some ports require and always use some non-conflicting DWARF 3 extensions in the unwind tables.
+
+	   Version 4 may require GDB 7.0 and -fvar-tracking-assignments for maximum benefit. Version 5 requires GDB 8.0 or higher.
+
+	   GCC no longer supports DWARF Version 1, which is substantially different than Version 2 and later.  For historical reasons, some
+	   other DWARF-related options such as -fno-dwarf2-cfi-asm) retain a reference to DWARF Version 2 in their names, but apply to all
+	   currently-supported versions of DWARF.
+
+       -gstabs
+	   Produce debugging information in stabs format (if that is supported), without GDB extensions.  This is the format used by DBX on
+	   most BSD systems.  On MIPS, Alpha and System V Release 4 systems this option produces stabs debugging output that is not
+	   understood by DBX.  On System V Release 4 systems this option requires the GNU assembler.
+
+       -gstabs+
+	   Produce debugging information in stabs format (if that is supported), using GNU extensions understood only by the GNU debugger
+	   (GDB).  The use of these extensions is likely to make other debuggers crash or refuse to read the program.
+student@csvm-202312:~/Documents/project_0$ gccp-grtest.cq-ottest
+student@csvm-202312:~/Documents/project_0$ ulimit -c unlimited
+student@csvm-202312:~/Documents/project_0$ sudo service apport start
+[sudo] password for student:
+student@csvm-202312:~/Documents/project_0$ ./test
+Segmentation fault (core dumped)
+student@csvm-202312:~/Documents/project_0$ whoami
+student
+student@csvm-202312:~/Documents/project_0$ whoami
+student
+student@csvm-202312:~/Documents/project_0$ cp /var/lib/apport/coredump/core._home_student_Documents_project_0_test.1000. core
+cp: cannot stat '/var/lib/apport/coredump/core._home_student_Documents_project_0_test.1000.': No such file or directory
+student@csvm-202312:~/Documents/project_0$ cp /var/lib/
+AccountsService/	 dhcp/			  logrotate/		   shells.state		    unattended-upgrades/
+acpi-support/		 dictionaries-common/	  man-db/		   shim-signed/		    update-manager/
+alsa/			 doc-base/		  misc/			   snapd/		    update-notifier/
+app-info/		 dpkg/			  NetworkManager/	   snmp/		    upower/
+apport/			 emacsen-common/	  os-prober/		   sudo/		    usb_modeswitch/
+apt/			 fwupd/			  PackageKit/		   swcatalog/		    usbutils/
+aptitude/		 gems/			  pam/			   synaptic/		    vim/
+aspell/			 ghostscript/		  php/			   systemd/		    whoopsie/
+avahi-autoipd/		 grub/			  plocate/		   tpm/			    xfonts/
+blueman/		 hp/			  plymouth/		   ubiquity/		    xkb/
+boltd/			 ispell/		  polkit-1/		   ubuntu-advantage/	    xml-core/
+BrlAPI/			 libreoffice/		  private/		   ubuntu-drivers-common/
+colord/			 lightdm/		  python/		   ubuntu-release-upgrader/
+command-not-found/	 lightdm-data/		  saned/		   ucf/
+dbus/			 locales/		  sgml-base/		   udisks2/
+student@csvm-202312:~/Documents/project_0$ cp /var/lib/
+AccountsService/	 dhcp/			  logrotate/		   shells.state		    unattended-upgrades/
+acpi-support/		 dictionaries-common/	  man-db/		   shim-signed/		    update-manager/
+alsa/			 doc-base/		  misc/			   snapd/		    update-notifier/
+app-info/		 dpkg/			  NetworkManager/	   snmp/		    upower/
+apport/			 emacsen-common/	  os-prober/		   sudo/		    usb_modeswitch/
+apt/			 fwupd/			  PackageKit/		   swcatalog/		    usbutils/
+aptitude/		 gems/			  pam/			   synaptic/		    vim/
+aspell/			 ghostscript/		  php/			   systemd/		    whoopsie/
+avahi-autoipd/		 grub/			  plocate/		   tpm/			    xfonts/
+blueman/		 hp/			  plymouth/		   ubiquity/		    xkb/
+boltd/			 ispell/		  polkit-1/		   ubuntu-advantage/	    xml-core/
+BrlAPI/			 libreoffice/		  private/		   ubuntu-drivers-common/
+colord/			 lightdm/		  python/		   ubuntu-release-upgrader/
+command-not-found/	 lightdm-data/		  saned/		   ucf/
+dbus/			 locales/		  sgml-base/		   udisks2/
+student@csvm-202312:~/Documents/project_0$ cp /var/lib/apport/coredump/core._home_student_Documents_project_0_test.1000.
+core._home_student_Documents_project_0_test.1000.730a6723-912a-432b-9bb8-535c732ed95d.2225.114225
+core._home_student_Documents_project_0_test.1000.c666e729-a9c1-4256-9562-093fe033a0db.1536.46525
+student@csvm-202312:~/Documents/project_0$ cp /var/lib/apport/coredump/core._home_student_Documents_project_0_test.1000.
+core._home_student_Documents_project_0_test.1000.730a6723-912a-432b-9bb8-535c732ed95d.2225.114225
+core._home_student_Documents_project_0_test.1000.c666e729-a9c1-4256-9562-093fe033a0db.1536.46525
+student@csvm-202312:~/Documents/project_0$ cp /var/lib/apport/coredump/core._home_student_Documents_project_0_test.1000.
+core._home_student_Documents_project_0_test.1000.730a6723-912a-432b-9bb8-535c732ed95d.2225.114225
+core._home_student_Documents_project_0_test.1000.c666e729-a9c1-4256-9562-093fe033a0db.1536.46525
+student@csvm-202312:~/Documents/project_0$ cp /var/lib/apport/coredump/core._home_student_Documents_project_0_test.1000.
+core._home_student_Documents_project_0_test.1000.730a6723-912a-432b-9bb8-535c732ed95d.2225.114225
+core._home_student_Documents_project_0_test.1000.c666e729-a9c1-4256-9562-093fe033a0db.1536.46525
+student@csvm-202312:~/Documents/project_0$ core._home_student_Documents_project_0_test.1000.c666e729-a9c1-4256-9562-093fe033a0db.1536.465259core093fe033a0db.1536.46525
+student@csvm-202312:~/Documents/project_0$ gdb test core
+GNU gdb (Ubuntu 12.1-0ubuntu1~22.04) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from test...
+[New LWP 1536]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+Core was generated by `./test'.
+Program terminated with signal SIGSEGV, Segmentation fault.
+#0  0x000055ed1aa51183 in main () at test.c:7
+7		strncpy(buffer, "Hello, world!", 14);
+(gdb) q
+student@csvm-202312:~/Documents/project_0$ exit
+exit
+
+Script done on 2024-01-16 18:24:07-05:00 [COMMAND_EXIT_CODE="0"]
